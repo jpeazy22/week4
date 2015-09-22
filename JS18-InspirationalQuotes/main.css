@@ -1,0 +1,27 @@
+.mainWrapper {
+	width: 960px;
+	margin: 0 auto;
+}
+
+.intro {
+	border-bottom: 1px solid lightSlateGrey;
+}
+
+.quotes {
+	border: solid 1px black;
+	margin-top: 10px;
+}
+
+.quoteBox {
+	border: solid 1px blue;
+	float: left;
+	width: 30%;
+	height: 200px;
+	margin: 10px 1%;
+	border-radius: 5px;
+}
+
+.styleForm {
+	border: solid 1px black;
+	border-radius: 5px;
+}

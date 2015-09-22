@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+	<head>
+	  	<meta charset="utf-8">
+	  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	  	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js"></script>
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<title>Inspirational Quotes</title>
+
+	</head>
+	<body>
+		<div class="mainWrapper" ng-controller="mainController">
+			
+			<header class="intro">
+				<h1>Get Your Head out of the Clouds</h1>
+				<button ng-click="toggleForm()">Click to Add a Quote!</button>
+
+				<form class="styleForm" ng-show="showForm">
+					<label>Quote:</label>
+					<textarea class="quote" placeholder="Add Quote" ng-model="quote"></textarea>
+					
+					<label>Author:</label>
+					<input class="author" placeholder="Add Author" ng-model="author"></input>
+				  	
+				  	<input type="submit" value="Submit" ng-click="submitQuote()">
+					<button ng-click="toggleForm($event)" ng-click="display()">Close Form</button>
+				</form>
+
+			</header>
+			
+			<section class="quotes">
+				<div class="quoteBox" ng-repeat="quote in quotes">
+					<p>Quote:{{quote.text}}</p>
+					<h4>Author: {{quote.author}}</h4>
+				</div>
+			</section>
+
+			<script type="text/javascript" src="main.js"></script>
+		</div>
+	</body>
+</html>
