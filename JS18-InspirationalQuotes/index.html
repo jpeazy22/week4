@@ -10,8 +10,29 @@
 	</head>
 	<body>
 		<div class="mainWrapper" ng-controller="mainController">
-			
-			<header class="intro">
+
+		<div >
+			<input placeholder="Author" ng-model="author">
+			<input placeholder="Quote" ng-model="quote">
+			<button ng-click="submitQuote()">Click Here!</button>
+
+		</div>
+		<div ng-repeat="hello in quotes">
+			{{hello.author}}
+			{{hello.quote}}
+			{{hello.rating}}
+
+			<button ng-click="removeQuote($index)">Delete</button>
+		</div>
+
+			<script type="text/javascript" src="main.js"></script>
+		</div>
+	</body>
+</html>
+
+
+
+<!-- <header class="intro">
 				<h1>Get Your Head out of the Clouds</h1>
 				<button ng-click="toggleForm()">Click to Add a Quote!</button>
 
@@ -33,9 +54,4 @@
 					<p>Quote:{{quote.text}}</p>
 					<h4>Author: {{quote.author}}</h4>
 				</div>
-			</section>
-
-			<script type="text/javascript" src="main.js"></script>
-		</div>
-	</body>
-</html>
+			</section> -->
