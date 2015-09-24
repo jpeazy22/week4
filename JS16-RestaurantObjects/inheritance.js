@@ -4,7 +4,8 @@ var FoodItem = function(name, calories, vegan, glutenFree, citrusfree){
 	this.vegan = vegan;
 	this.glutenFree = glutenFree;
 	this.citrusfree = citrusfree;
-	FoodItem.prototype.stringify = function(){
+
+FoodItem.prototype.stringify = function(){
 		console.log('Item: ' + this.name + '\nCalories: ' + this.calories + '\nVegan: ' + this.vegan + ' \nGluten Free: ' + this.glutenFree + ' \nCitrus Free: ' + this.citrusfree)
 	}
 }
@@ -34,18 +35,14 @@ Drink.prototype.stringify = function(){
 	for(var i = 0; i < this.ingredients.length; i++){
 		ingredientString += this.ingredients[i].name + ', '
 	}
-	console.log('Drink: ' + this.name + '\n' + this.description + '\nPrice: ' + this.price + ' \nIngredients: ' + ingredientString) 
+	//console.log('Drink: ' + this.name + '\n' + this.description + '\nPrice: ' + this.price + ' \nIngredients: ' + ingredientString) 
 	
 }
 
 var Plate = function(name, description, price, ingredients){
-	this.name = name;
-	this.description = description;
-	this.price = price;
-	this.ingredients = ingredients;
+	Drink.call(this, name, description, price, ingredients)
+	console.log(this)
 }
-
-
 
 	this.isVegan = function () {
 		var confirm = 0
@@ -123,9 +120,9 @@ var guac = new Plate("Bowl O' Guac", "'Delish'", 6.50, [avacado, onion, lime, te
 var marg = new Drink('Margarita', "'Refreshing'", 7.50, [tequila, tripleSec, lime])
 
 
-marg.stringify();
-burrito.stringify();
-guac.stringify();
+// marg.stringify();
+// burrito.stringify();
+// guac.stringify();
 
 
 
