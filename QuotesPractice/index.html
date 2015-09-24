@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="quotes">
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<title>Quotes, Quotes, More Quotes</title>
+	</head>
+	<body>
+		<div ng-controller="mainController">
+			<div>
+				<h1>Go Quote Yourself!</h1>
+				<button ng-click="toggleForm()">Add Quote!</button>
+				<button ng-click="randomQuote()">Random Quote</button>
+				<form ng-show="showForm">
+					<input ng-model="quote" placeholder="Quote">
+					<input ng-model="author" placeholder="Author">			
+					<input ng-model="rating" placeholder="Rating">
+					<button ng-click="addQuote()">Submit!</button>
+					<button ng-click="toggleForm($event)" ng-click="display()">Close Form</button>
+ 				</form>		 				</form>
+				</form>
+			</div>
+			<button ng-click="quote in quotes | filter:query | orderBy: 'author'">Sort By Author</button>
+			
+			<div ng-repeat="quote in quotes | filter:query | orderBy: '-rating'">
+				<h2>Quote: {{quote.quote}}</h2>
+				<p>Author: {{quote.author}}</p>		
+				<p>Rating: {{quote.rating}}</p>
+				<button ng-click="removeQuote()">Remove</button>
+			</div>
+		</div>
+		<script type="text/javascript" src="main.js"></script>
+	</body>
+</html>
