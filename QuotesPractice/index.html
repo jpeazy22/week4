@@ -1,33 +1,77 @@
 <!DOCTYPE html>
 <html ng-app="quotes">
 	<head>
+	<meta charset = "UTF-8">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<link href='https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise' rel='stylesheet' type='text/css'>
 		<title>Quotes, Quotes, More Quotes</title>
 	</head>
 	<body>
 		<div ng-controller="mainController">
-			<div>
-				<h1>Go Quote Yourself!</h1>
-				<button ng-click="toggleForm()">Add Quote!</button>
-				<button ng-click="randomQuote()">Random Quote</button>
-				<form ng-show="showForm">
-					<input ng-model="quote" placeholder="Quote">
-					<input ng-model="author" placeholder="Author">			
-					<input ng-model="rating" placeholder="Rating">
-					<button ng-click="addQuote()">Submit!</button>
-					<button ng-click="toggleForm($event)" ng-click="display()">Close Form</button>
- 				</form>		 				</form>
-				</form>
-			</div>
-			<button ng-click="quote in quotes | filter:query | orderBy: 'author'">Sort By Author</button>
 			
-			<div ng-repeat="quote in quotes | filter:query | orderBy: '-rating'">
-				<h2>Quote: {{quote.quote}}</h2>
-				<p>Author: {{quote.author}}</p>		
-				<p>Rating: {{quote.rating}}</p>
-				<button ng-click="removeQuote()">Remove</button>
-			</div>
-		</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12"><h1>Go Quote Yourself!</h1>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-6 col-sm-4 col-md-2">
+						<button class="btn btn-warning btn-xs" ng-click="toggleForm()">Quote Yourself Here!</button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<form ng-show="showForm">
+							<input ng-model="quote" placeholder="Quote">
+							<input ng-model="author" placeholder="Author">	
+							<select ng-model="rating">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+							</select>		
+							<button ng-click="addQuote()">Submit!</button>
+							<button ng-click="toggleForm($event)" ng-click="display()">Close Form</button>
+	 					</form>	
+	 				</div>
+	 			</div>	
+	 		<hr> 				
+				<div class="row">
+					<div class="col-xs-6 col-sm-4 col-md-2">
+						<button class="btn btn-warning btn-xs" ng-click="getRandomQuote()">Random Quote</button>
+					</div>
+						<form class="randomQuote" ng-show="randomQuote">{{randomQuote.quote}}</form>
+				</div> <!-- closes row for hidden form -->
+			<hr>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 quoteBack" ng-repeat="quote in quotes | orderBy: '-rating'" ng-click="cl($index)">
+						<div class="eachQuote">
+							<h3>{{quote.quote}}</h3>
+							<p>~ {{quote.author}}</p>
+							{{quote.stars.join('')}}	
+
+
+
+							
+<!-- 
+							<div ng-model="quote.rating" type="text">
+								Rating:  <div class="stars" ng-repeat="star in starArray">{{quote.rating}}</div>
+
+ -->
+
+
+								<button class="btn btn-warning btn-xs removeButton" ng-click="removeQuote(quote)">Remove</button></div>
+						</div>
+					</div><!-- closes div for column widths -->
+				</div><!-- closes row for quotes -->
+			
+		</div><!-- closes the container -->
 		<script type="text/javascript" src="main.js"></script>
 	</body>
 </html>
+
+
+

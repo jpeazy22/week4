@@ -1,0 +1,49 @@
+.stars {
+    display: inline-block;
+}
+
+.eachQuote {
+    height: 150px;
+    border: 1px solid #5A6963 ;
+    border-radius: 5px;
+    margin: 2px;
+    padding: 3px;
+    color: #ffffff;
+    /*opacity: 0.5;*/
+    background-image: url("http://ilovemykidsblog.net/wp-content/uploads/2013/06/Chalkboard-background-1.jpg");
+}
+
+.eachQuote h3 {
+    font-family: 'Waiting for the Sunrise', cursive;
+    text-align: center;
+}
+
+.eachQuote:hover{
+    background-color: rgba(179,209, 198, 0.4);
+}
+
+.sortAuthorButton{
+    display: block;
+}
+
+.randomQuote {
+    display: block;
+    font-family: 'Waiting for the Sunrise', cursive;
+    font-size: 25px;
+}
+
+h1, p {
+    font-family: 'Waiting for the Sunrise', cursive;
+}
+
+p {
+    font-family: 'Waiting for the Sunrise', cursive;
+    font-size: 16px;
+    text-transform: uppercase;
+   text-align: center;
+}
+
+.removeButton {
+    float: right;
+}
+

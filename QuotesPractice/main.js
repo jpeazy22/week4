@@ -4,12 +4,14 @@ angular.module('quotes').controller('mainController', ['$scope', function($scope
 	$scope.quote = ''
 	$scope.author = ''
 	$scope.rating = ''
-
+	$scope.cl = function(index){
+		console.log(index)
+	}
 	$scope.quotes = [
 	{
 		quote: "It's a beautiful day in the Neighborhood",
 		author: 'Mr. Rogers',
-		rating: 2,
+		rating: 5,
 	},
 	{
 		quote: "It's a good day to die hard.",
@@ -43,10 +45,12 @@ angular.module('quotes').controller('mainController', ['$scope', function($scope
 		$scope.quote = ''		
 		$scope.author = ''
 		$scope.rating = ''
+		stars()
 	}
 
-	$scope.removeQuote = function(index){
-		$scope.quotes.splice(index, 1);
+	$scope.removeQuote = function(quote){
+		$scope.quotes.splice($scope.quotes.indexOf(quote), 1);
+
 	}
 
 	$scope.toggleForm = function($event){
@@ -54,11 +58,39 @@ angular.module('quotes').controller('mainController', ['$scope', function($scope
 		$scope.hideForm = !$scope.hideForm			
 	}
 
-	$scope.randomQuote = function () {
+	$scope.getRandomQuote = function () {
 	   $scope.randomQuote = $scope.quotes[Math.floor(Math.random() * $scope.quotes.length)];
-}
+	}
+
+	function stars(){
+		for (var i = 0; i < $scope.quotes.length; i++) {
+		// console.log($scope.quotes[i])
+		$scope.quotes[i].stars = []
+			for (var j = 0; j < $scope.quotes[i].rating; j++){
+				$scope.quotes[i].stars.push("★")
+				// console.log($scope.quotes[i].stars)
+			}
+		// $scope.quotes[i].stars.join(' ')
+		// console.log($scope.quotes[i].stars)
+
+	};
+	}
+	stars()
 
 
+	
+	// $scope.starArray = ['♘','♘ ','♘  ','♘   ','♘    ']
+	// Quote.prototype.setRating = function(){
+	// 	if(this.stars[2].base == false){
+	// 		for(var i = 1; i >= 0; i--){
+	// 			if(this.star[i].base == true){
+	// 				this.rating = i + 1;
+	// 				break;
+	// 			}
+	// 		}
+	// 	}
+	// }
+	// return Quote;
 
 // 	$scope.sortAuthor = function(){
 // quote in quotes | filter:query | orderBy: 'author'
