@@ -7,7 +7,7 @@ angular.module('quotes').controller('mainController', ['$scope', function($scope
 	$scope.cl = function(index){
 		console.log(index)
 	}
-	$scope.quotes = [
+	var quotesMain = [
 	{
 		quote: "It's a beautiful day in the Neighborhood",
 		author: 'Mr. Rogers',
@@ -34,7 +34,27 @@ angular.module('quotes').controller('mainController', ['$scope', function($scope
 		rating: 2,
 	},
 
-	]
+	] 
+	var sortCollection = function(array, property, order){
+		order = order || "descending"
+		array.sort(function(a,b){
+			if (order === "ascending"){
+				if(a[property].toLowerCase() < b[property].toLowerCase()) return -1;
+	    		if(a[property].toLowerCase() > b[property].toLowerCase()) return 1;
+    			return 0;
+    		}
+    		if (order === "descending"){
+				if(a[property] > b[property]) return -1;
+	    		if(a[property] < b[property]) return 1;
+    			return 0;
+    		}
+		})
+		return array
+	}
+
+	$scope.quotes = quotesMain
+
+	sortCollection($scope.quotes, "rating", "descending")
 
 	$scope.addQuote = function(){
 		var myObj = {}
@@ -42,10 +62,18 @@ angular.module('quotes').controller('mainController', ['$scope', function($scope
 		myObj.author = $scope.author
 		myObj.rating = $scope.rating
 		$scope.quotes.push(myObj)
+		console.log($scope.quotes)
 		$scope.quote = ''		
 		$scope.author = ''
 		$scope.rating = ''
 		stars()
+		sortCollection($scope.quotes, "rating", "descending")
+	}
+
+	$scope.sortByAuthor = function(event){
+		console.log($scope.quotes)
+
+		sortCollection($scope.quotes, "author", "ascending")
 	}
 
 	$scope.removeQuote = function(quote){

@@ -47,3 +47,7 @@ p {
     float: right;
 }
 
+.formButtons{
+    vertical-align: bottom;
+    float: right;
+}
